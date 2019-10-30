@@ -9,7 +9,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 
-import Nav from '../nav/nav';
 import './layout.scss';
 
 import { connect } from 'react-redux';
@@ -39,12 +38,9 @@ const Layout = ({ bgColor, changeBG, children }) => (
         `}
         render={data => (
             <>
-                <Nav />
                 <div className="main" style={{ backgroundColor: bgColor }}>
-                    {/*
-                   <button onClick={() => changeBG('red')}>red</button>
+                    <button onClick={() => changeBG('red')}>red</button>
                     <button onClick={() => changeBG('white')}>white</button>
-                   */}
                     <main>{children}</main>
                     <footer />
                 </div>
