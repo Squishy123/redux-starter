@@ -1,0 +1,35 @@
+@font-face {
+  font-family: 'Open Dyslexic';
+  src: 
+    local('Open Dyslexic'),
+    url(./fonts/open-dyslexic/OpenDyslexic-Regular.otf);
+}
+
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.main {
+  position: absolute;
+  
+  width: 100%;
+  min-height: 100vh;
+
+  z-index: 0;
+
+  transition: background-color .25s linear;
+}
+
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 5px;
+}

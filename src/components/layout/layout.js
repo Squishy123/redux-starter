@@ -1,65 +1,63 @@
-import React from "react"
-import PropTypes from "prop-types"
-import { StaticQuery, graphql } from "gatsby"
+/**
+ * Layout component that queries for data
+ * with Gatsby's StaticQuery component
+ *
+ * See: https://www.gatsbyjs.org/docs/static-query/
+ */
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import { StaticQuery, graphql } from 'gatsby';
+
+import Nav from '../nav/nav';
+import './layout.scss';
 
 import { connect } from 'react-redux';
 
-import Navbar from '../navbar/navbar';
-import styles from "./layout.module.scss"
+import { changeBG } from '../../state/actions';
 
-//example redux thingey
-const changeBG = ({color, setBGColor}) => (
-  <div>
-    <p>{color}</p>
-    <button onClick={() => {setBGColor('blue')}}>Blue</button>
-    <button onClick={() => {setBGColor('red')}}>Red</button>
-
-  </div>
-)
-
-changeBG.propTypes = {
-  color: PropTypes.string.isRequired,
-  setBGColor: PropTypes.func.isRequired
-}
-
-const mapStateToProps = ({color}) => {
-  return {color};
-}
+const mapStateToProps = state => {
+    return { bgColor: state.bgColor };
+};
 
 const mapDispatchToProps = dispatch => {
-  return {
-    setBGColor: (color) => dispatch({type: `SET_BG_COLOR`, color})
-  }
-}
+    return {
+        changeBG: bgColor => dispatch(changeBG(bgColor)),
+    };
+};
 
-const ConnectedBG = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(changeBG);
-
-const Layout = ({ children }) => (
-  <StaticQuery
-    query={graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            title
-          }
-        }
-      }
-    `}
-    render={data => (
-     <div className={styles.pageContainer}>
-        <Navbar/>
-        <ConnectedBG/>
-        <main>{children}</main>
-     </div>
-    )}
-  />
-)
+const Layout = ({ bgColor, changeBG, children }) => (
+    <StaticQuery
+        query={graphql`
+            query SiteTitleQuery {
+                site {
+                    siteMetadata {
+                        title
+                    }
+                }
+            }
+        `}
+        render={data => (
+            <>
+                <Nav />
+                <div className="main" style={{ backgroundColor: bgColor }}>
+                    {/*
+                   <button onClick={() => changeBG('red')}>red</button>
+                    <button onClick={() => changeBG('white')}>white</button>
+                   */}
+                    <main>{children}</main>
+                    <footer />
+                </div>
+            </>
+        )}
+    />
+);
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-}
+    children: PropTypes.node.isRequired,
+};
 
-export default Layout
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Layout);
