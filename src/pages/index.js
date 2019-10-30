@@ -18,13 +18,13 @@ const mapDispatchToProps = dispatch => {
 };
 
 const IndexPage = ({ changeBG }) => {
-    changeBG('white');
-
     return (
         <Layout>
             <SEO title="Home" />
             <div>
                 <h1>Redux Starter</h1>
+                <button onClick={() => changeBG('cornflowerblue')}>blue</button>
+                <button onClick={() => changeBG('white')}>white</button>
             </div>
         </Layout>
     );

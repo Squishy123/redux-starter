@@ -39,8 +39,6 @@ const Layout = ({ bgColor, changeBG, children }) => (
         render={data => (
             <>
                 <div className="main" style={{ backgroundColor: bgColor }}>
-                    <button onClick={() => changeBG('red')}>red</button>
-                    <button onClick={() => changeBG('white')}>white</button>
                     <main>{children}</main>
                     <footer />
                 </div>
