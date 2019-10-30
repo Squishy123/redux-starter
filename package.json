@@ -1,7 +1,7 @@
 {
-    "name": "easyread",
+    "name": "redux-starter",
     "private": true,
-    "description": "Easier Reading",
+    "description": "A gatsby starter with redux setup",
     "version": "0.1.0",
     "author": "Christian Wang - @squishy123",
     "dependencies": {
@@ -44,7 +44,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+        "url": "https://github.com/Squishy123/redux-starter"
     },
     "bugs": {
         "url": "https://github.com/gatsbyjs/gatsby/issues"
